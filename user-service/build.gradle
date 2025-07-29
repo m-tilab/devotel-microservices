@@ -1,0 +1,35 @@
+plugins {
+    id 'org.springframework.boot' version '3.5.4'
+    id 'io.spring.dependency-management' version '1.1.7'
+    id 'java'
+}
+group = 'com.devotel'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '21'
+repositories {
+    mavenCentral()
+}
+configurations {
+    jaxb
+}
+dependencies {
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // lombok for reducing boilerplate code
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.postgresql:postgresql'
+
+    // SOAP Web Services
+    implementation 'org.springframework.boot:spring-boot-starter-web-services'
+    implementation 'wsdl4j:wsdl4j'
+    jaxb("org.glassfish.jaxb:jaxb-xjc")
+
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.9'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+test { useJUnitPlatform() }
